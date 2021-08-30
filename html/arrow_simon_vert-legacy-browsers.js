@@ -1855,7 +1855,7 @@ function trialRoutineBegin(snapshot) {
     _trial_resp_allKeys = [];
     target_onset = Math.random() + 1.5;
     
-    if (train_trial_num % 2 === 0) {
+    if (trial_num % 2 === 0) {
         target_resp = even_target_resp;
         target_file = even_target_file;
         target_side = even_target_side;
