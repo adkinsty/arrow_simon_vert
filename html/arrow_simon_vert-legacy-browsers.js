@@ -158,7 +158,7 @@ function experimentInit() {
     text: 'You are about to begin a block of practice trials in a simple arrow response game.\n\nIn each trial, you will stare at a white cross in the center of the screen.\n\nAt a random time during the trial, a colored arrow will appear on the right, left, top, or bottom side of the screen. You will next press an arrow key to report the direction of the arrow. \n\nOn odd numbered trials (1, 3, 5, and so on) you will see a BLUE arrow on the left or right side and you will press the LEFT or RIGHT arrow key with your RIGHT hand:\n\n* If the arrow points LEFT, press the LEFT key with your right POINTER finger. \n* If the arrow points RIGHT, press the RIGHT key with your right MIDDLE finger.\n\nOn even numbered trials (2, 4, 6, and so on) you will see an ORANGE arrow on the top or bottom side and you will press the UP or DOWN arrow key with your LEFT hand. \n\n* If the arrow points UP, press the UP key with your left MIDDLE finger. \n* If the arrow points DOWN, press the DOWN key with your left POINTER finger.\n\nAfter each trial, you will receive feedback about how you did. Please try to respond as quickly and accurately as you can.\n\nWhen you are ready to begin the block of practice trials, please press the SPACE BAR. ',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.015,  wrapWidth: undefined, ori: 0,
+    pos: [0, 0], height: 0.02,  wrapWidth: undefined, ori: 0,
     color: new util.Color('black'),  opacity: 1,
     depth: 0.0 
   });
@@ -225,7 +225,7 @@ function experimentInit() {
   train_block_one_text = new visual.TextStim({
     win: psychoJS.window,
     name: 'train_block_one_text',
-    text: 'Nice job! You completed training block 1 of 2. Feel free to relax for a moment. And remember: \n\nOn odd numbered trials (1, 3, 5, and so on) you will see a BLUE arrow and you will press the W or O key with your INDEX finger. \n\n* If the arrow points LEFT, press the W key with your LEFT POINTER finger. \n* If the arrow points RIGHT, press the O key with your RIGHT POINTER finger.\n\nOn even numbered trials (2, 4, 6, and so on) you will see an ORANGE arrow and you will press the Q or P key with your MIDDLE finger. \n\n* If the arrow points LEFT, press the Q key with your LEFT MIDDLE finger. \n* If the arrow points RIGHT, press the P key with your RIGHT MIDDLE finger.\n\nPress the SPACE BAR when you are ready to continue.\n',
+    text: 'Nice job! You completed training block 1 of 2. Feel free to relax for a moment. And remember: \n\nOn odd numbered trials (1, 3, 5, and so on) you will see a BLUE arrow on the left or right side and you will press the LEFT or RIGHT arrow key with your RIGHT hand:\n\n* If the arrow points LEFT, press the LEFT key with your right POINTER finger. \n* If the arrow points RIGHT, press the RIGHT key with your right MIDDLE finger.\n\nOn even numbered trials (2, 4, 6, and so on) you will see an ORANGE arrow on the top or bottom side and you will press the UP or DOWN arrow key with your LEFT hand. \n\n* If the arrow points UP, press the UP key with your left MIDDLE finger. \n* If the arrow points DOWN, press the DOWN key with your left POINTER finger.\n\nPress the SPACE BAR when you are ready to continue.\n',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.02,  wrapWidth: undefined, ori: 0,
@@ -346,7 +346,7 @@ function experimentInit() {
     text: 'Nice job! Now you are about to begin a block of trials in a timed arrow response game. You will respond to arrows like in the first phase of practice, but you will need to time your responses perfectly, like in the second phase of practice.\n\nAs in the first phase of practice, at a random time during the trial, a colored arrow will appear on the right, left, top, or bottom side of the screen. You will press a key to report the direction of the arrow. \n\nOn odd numbered trials (1, 3, 5, and so on) you will see a BLUE arrow on the left or right side and you will press the LEFT or RIGHT arrow key with your RIGHT hand:\n\n* If the arrow points LEFT, press the LEFT key with your right POINTER finger. \n* If the arrow points RIGHT, press the RIGHT key with your right MIDDLE finger.\n\nOn even numbered trials (2, 4, 6, and so on) you will see an ORANGE arrow on the top or bottom side and you will press the UP or DOWN arrow key with your LEFT hand. \n\n* If the arrow points UP, press the UP key with your left MIDDLE finger. \n* If the arrow points DOWN, press the DOWN key with your left POINTER finger.\n\nAs in the second phase of practice, each trial you will see a cross in the center of the screen. The cross will turn into a black dot that flashes three times. After the third flash, a WHITE DOT will appear at the center of the screen.\n\nPlease respond exactly when the WHITE DOT appears.\n\nWhen you are ready to begin the first block, please press the SPACE BAR. ',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.015,  wrapWidth: undefined, ori: 0,
+    pos: [0, 0], height: 0.02,  wrapWidth: undefined, ori: 0,
     color: new util.Color('black'),  opacity: 1,
     depth: 0.0 
   });
@@ -662,10 +662,10 @@ function trials_train_simonLoopBegin(trials_train_simonLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   trials_train_simon = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 15, method: TrialHandler.Method.FULLRANDOM,
+    nReps: 1, method: TrialHandler.Method.FULLRANDOM,
     extraInfo: expInfo, originPath: undefined,
     trialList: 'conditions.csv',
-    seed: undefined, name: 'trials_train_simon'
+    seed: 15, name: 'trials_train_simon'
   });
   psychoJS.experiment.addLoop(trials_train_simon); // add the loop to the experiment
   currentLoop = trials_train_simon;  // we're now the current loop
@@ -707,10 +707,10 @@ function trials_train_timingLoopBegin(trials_train_timingLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   trials_train_timing = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 60, method: TrialHandler.Method.SEQUENTIAL,
+    nReps: 6, method: TrialHandler.Method.SEQUENTIAL,
     extraInfo: expInfo, originPath: undefined,
     trialList: undefined,
-    seed: undefined, name: 'trials_train_timing'
+    seed: 60, name: 'trials_train_timing'
   });
   psychoJS.experiment.addLoop(trials_train_timing); // add the loop to the experiment
   currentLoop = trials_train_timing;  // we're now the current loop
@@ -745,10 +745,10 @@ function blocksLoopBegin(blocksLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   blocks = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 10, method: TrialHandler.Method.SEQUENTIAL,
+    nReps: 2, method: TrialHandler.Method.SEQUENTIAL,
     extraInfo: expInfo, originPath: undefined,
     trialList: undefined,
-    seed: undefined, name: 'blocks'
+    seed: 10, name: 'blocks'
   });
   psychoJS.experiment.addLoop(blocks); // add the loop to the experiment
   currentLoop = blocks;  // we're now the current loop
@@ -777,10 +777,10 @@ function trialsLoopBegin(trialsLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   trials = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 15, method: TrialHandler.Method.FULLRANDOM,
+    nReps: 1, method: TrialHandler.Method.FULLRANDOM,
     extraInfo: expInfo, originPath: undefined,
     trialList: 'conditions.csv',
-    seed: undefined, name: 'trials'
+    seed: 15, name: 'trials'
   });
   psychoJS.experiment.addLoop(trials); // add the loop to the experiment
   currentLoop = trials;  // we're now the current loop
@@ -1538,7 +1538,7 @@ function trial_train_timingRoutineEachFrame(snapshot) {
     }
 
     if (trial_resp_timing.status === PsychoJS.Status.STARTED) {
-      let theseKeys = trial_resp_timing.getKeys({keyList: ['q', 'w', 'o', 'p', 'esc'], waitRelease: false});
+      let theseKeys = trial_resp_timing.getKeys({keyList: ['left', 'right', 'up', 'down', 'esc'], waitRelease: false});
       _trial_resp_timing_allKeys = _trial_resp_timing_allKeys.concat(theseKeys);
       if (_trial_resp_timing_allKeys.length > 0) {
         trial_resp_timing.keys = _trial_resp_timing_allKeys[0].name;  // just the first key pressed

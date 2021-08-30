@@ -43,7 +43,7 @@
         <Param name="flip" updates="constant" val="" valType="str"/>
         <Param name="font" updates="constant" val="Arial" valType="str"/>
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.015" valType="code"/>
+        <Param name="letterHeight" updates="constant" val="0.02" valType="code"/>
         <Param name="name" updates="None" val="instruct_text" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
@@ -452,7 +452,7 @@
         <Param name="flip" updates="constant" val="" valType="str"/>
         <Param name="font" updates="constant" val="Arial" valType="str"/>
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.015" valType="code"/>
+        <Param name="letterHeight" updates="constant" val="0.02" valType="code"/>
         <Param name="name" updates="None" val="instruct_text_simon" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
@@ -809,7 +809,7 @@
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
       </PolygonComponent>
       <KeyboardComponent name="trial_resp_timing">
-        <Param name="allowedKeys" updates="constant" val="'q','w','o','p','esc'" valType="code"/>
+        <Param name="allowedKeys" updates="constant" val="'left','right','up','down','esc'" valType="code"/>
         <Param name="correctAns" updates="constant" val="" valType="str"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="discard previous" updates="constant" val="True" valType="bool"/>
@@ -955,7 +955,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="Nice job! You completed training block 1 of 2. Feel free to relax for a moment. And remember: &amp;#10;&amp;#10;On odd numbered trials (1, 3, 5, and so on) you will see a BLUE arrow and you will press the W or O key with your INDEX finger. &amp;#10;&amp;#10;* If the arrow points LEFT, press the W key with your LEFT POINTER finger. &amp;#10;* If the arrow points RIGHT, press the O key with your RIGHT POINTER finger.&amp;#10;&amp;#10;On even numbered trials (2, 4, 6, and so on) you will see an ORANGE arrow and you will press the Q or P key with your MIDDLE finger. &amp;#10;&amp;#10;* If the arrow points LEFT, press the Q key with your LEFT MIDDLE finger. &amp;#10;* If the arrow points RIGHT, press the P key with your RIGHT MIDDLE finger.&amp;#10;&amp;#10;Press the SPACE BAR when you are ready to continue.&amp;#10;" valType="str"/>
+        <Param name="text" updates="constant" val="Nice job! You completed training block 1 of 2. Feel free to relax for a moment. And remember: &amp;#10;&amp;#10;On odd numbered trials (1, 3, 5, and so on) you will see a BLUE arrow on the left or right side and you will press the LEFT or RIGHT arrow key with your RIGHT hand:&amp;#10;&amp;#10;* If the arrow points LEFT, press the LEFT key with your right POINTER finger. &amp;#10;* If the arrow points RIGHT, press the RIGHT key with your right MIDDLE finger.&amp;#10;&amp;#10;On even numbered trials (2, 4, 6, and so on) you will see an ORANGE arrow on the top or bottom side and you will press the UP or DOWN arrow key with your LEFT hand. &amp;#10;&amp;#10;* If the arrow points UP, press the UP key with your left MIDDLE finger. &amp;#10;* If the arrow points DOWN, press the DOWN key with your left POINTER finger.&amp;#10;&amp;#10;Press the SPACE BAR when you are ready to continue.&amp;#10;" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
@@ -1041,9 +1041,9 @@
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="fullRandom" valType="str"/>
-      <Param name="nReps" updates="None" val="15" valType="code"/>
+      <Param name="nReps" updates="None" val="1" valType="code"/>
       <Param name="name" updates="None" val="trials_train_simon" valType="code"/>
-      <Param name="random seed" updates="None" val="" valType="code"/>
+      <Param name="random seed" updates="None" val="15" valType="code"/>
     </LoopInitiator>
     <Routine name="trial_train_simon"/>
     <Routine name="feedback"/>
@@ -1058,9 +1058,9 @@
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="60" valType="code"/>
+      <Param name="nReps" updates="None" val="6" valType="code"/>
       <Param name="name" updates="None" val="trials_train_timing" valType="code"/>
-      <Param name="random seed" updates="None" val="" valType="code"/>
+      <Param name="random seed" updates="None" val="60" valType="code"/>
     </LoopInitiator>
     <Routine name="trial_train_timing"/>
     <Routine name="feedback_timing"/>
@@ -1073,9 +1073,9 @@
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="False" valType="bool"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="10" valType="code"/>
+      <Param name="nReps" updates="None" val="2" valType="code"/>
       <Param name="name" updates="None" val="blocks" valType="code"/>
-      <Param name="random seed" updates="None" val="" valType="code"/>
+      <Param name="random seed" updates="None" val="10" valType="code"/>
     </LoopInitiator>
     <LoopInitiator loopType="TrialHandler" name="trials">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
@@ -1084,9 +1084,9 @@
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="fullRandom" valType="str"/>
-      <Param name="nReps" updates="None" val="15" valType="code"/>
+      <Param name="nReps" updates="None" val="1" valType="code"/>
       <Param name="name" updates="None" val="trials" valType="code"/>
-      <Param name="random seed" updates="None" val="" valType="code"/>
+      <Param name="random seed" updates="None" val="15" valType="code"/>
     </LoopInitiator>
     <Routine name="trial"/>
     <Routine name="feedback_test"/>
