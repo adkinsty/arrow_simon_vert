@@ -104,7 +104,6 @@ var instructions_simonClock;
 var instruct_text_simon;
 var instruct_resp_simon;
 var trial_train_simonClock;
-var train_trial_hand;
 var fixation_simon;
 var target_simon;
 var trial_resp_simon;
@@ -137,7 +136,6 @@ var instructionsClock;
 var instruct_text;
 var instruct_resp;
 var trialClock;
-var trial_hand;
 var fixation;
 var dot1;
 var dot2;
@@ -178,24 +176,13 @@ function experimentInit() {
   
   // Initialize components for Routine "trial_train_simon"
   trial_train_simonClock = new util.Clock();
-  train_trial_hand = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'train_trial_hand',
-    text: '',
-    font: 'Arial',
-    units: undefined, 
-    pos: [0, 0.05], height: 0.02,  wrapWidth: undefined, ori: 0.0,
-    color: new util.Color(undefined),  opacity: undefined,
-    depth: 0.0 
-  });
-  
   fixation_simon = new visual.ShapeStim ({
     win: psychoJS.window, name: 'fixation_simon', 
     vertices: 'cross', size:[0.05, 0.05],
     ori: 0, pos: [0, 0],
     lineWidth: 1, lineColor: new util.Color(undefined),
     fillColor: new util.Color(undefined),
-    opacity: 1, depth: -1, interpolate: true,
+    opacity: 1, depth: 0, interpolate: true,
   });
   
   target_simon = new visual.ImageStim({
@@ -205,7 +192,7 @@ function experimentInit() {
     ori : 0, pos : undefined, size : [0.1, 0.1],
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : -2.0 
+    texRes : 512, interpolate : true, depth : -1.0 
   });
   trial_resp_simon = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
@@ -366,24 +353,13 @@ function experimentInit() {
   
   // Initialize components for Routine "trial"
   trialClock = new util.Clock();
-  trial_hand = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'trial_hand',
-    text: '',
-    font: 'Arial',
-    units: undefined, 
-    pos: [0, 0.05], height: 0.02,  wrapWidth: undefined, ori: 0.0,
-    color: new util.Color(undefined),  opacity: undefined,
-    depth: 0.0 
-  });
-  
   fixation = new visual.ShapeStim ({
     win: psychoJS.window, name: 'fixation', 
     vertices: 'cross', size:[0.05, 0.05],
     ori: 0, pos: [0, 0],
     lineWidth: 1, lineColor: new util.Color(undefined),
     fillColor: new util.Color(undefined),
-    opacity: 1, depth: -1, interpolate: true,
+    opacity: 1, depth: 0, interpolate: true,
   });
   
   dot1 = new visual.Polygon ({
@@ -392,7 +368,7 @@ function experimentInit() {
     ori: 0, pos: [0, 0],
     lineWidth: 1, lineColor: new util.Color([(- 1), (- 1), (- 1)]),
     fillColor: new util.Color([(- 1), (- 1), (- 1)]),
-    opacity: 1, depth: -2, interpolate: true,
+    opacity: 1, depth: -1, interpolate: true,
   });
   
   dot2 = new visual.Polygon ({
@@ -401,7 +377,7 @@ function experimentInit() {
     ori: 0, pos: [0, 0],
     lineWidth: 1, lineColor: new util.Color([(- 1), (- 1), (- 1)]),
     fillColor: new util.Color([(- 1), (- 1), (- 1)]),
-    opacity: 1, depth: -3, interpolate: true,
+    opacity: 1, depth: -2, interpolate: true,
   });
   
   dot3 = new visual.Polygon ({
@@ -410,7 +386,7 @@ function experimentInit() {
     ori: 0, pos: [0, 0],
     lineWidth: 1, lineColor: new util.Color([(- 1), (- 1), (- 1)]),
     fillColor: new util.Color([(- 1), (- 1), (- 1)]),
-    opacity: 1, depth: -4, interpolate: true,
+    opacity: 1, depth: -3, interpolate: true,
   });
   
   dot4 = new visual.Polygon ({
@@ -419,7 +395,7 @@ function experimentInit() {
     ori: 0, pos: [0, 0],
     lineWidth: 1, lineColor: new util.Color([1, 1, 1]),
     fillColor: new util.Color([1, 1, 1]),
-    opacity: 1, depth: -5, interpolate: true,
+    opacity: 1, depth: -4, interpolate: true,
   });
   
   target = new visual.ImageStim({
@@ -429,7 +405,7 @@ function experimentInit() {
     ori : 0, pos : undefined, size : [0.1, 0.1],
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : -6.0 
+    texRes : 512, interpolate : true, depth : -5.0 
   });
   trial_resp = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
@@ -671,10 +647,10 @@ function trials_train_simonLoopBegin(trials_train_simonLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   trials_train_simon = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 1, method: TrialHandler.Method.FULLRANDOM,
+    nReps: 15, method: TrialHandler.Method.FULLRANDOM,
     extraInfo: expInfo, originPath: undefined,
     trialList: 'conditions.csv',
-    seed: 15, name: 'trials_train_simon'
+    seed: undefined, name: 'trials_train_simon'
   });
   psychoJS.experiment.addLoop(trials_train_simon); // add the loop to the experiment
   currentLoop = trials_train_simon;  // we're now the current loop
@@ -715,10 +691,10 @@ function trials_train_timingLoopBegin(trials_train_timingLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   trials_train_timing = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 6, method: TrialHandler.Method.SEQUENTIAL,
+    nReps: 60, method: TrialHandler.Method.SEQUENTIAL,
     extraInfo: expInfo, originPath: undefined,
     trialList: undefined,
-    seed: 60, name: 'trials_train_timing'
+    seed: undefined, name: 'trials_train_timing'
   });
   psychoJS.experiment.addLoop(trials_train_timing); // add the loop to the experiment
   currentLoop = trials_train_timing;  // we're now the current loop
@@ -752,10 +728,10 @@ function blocksLoopBegin(blocksLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   blocks = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 2, method: TrialHandler.Method.SEQUENTIAL,
+    nReps: 10, method: TrialHandler.Method.SEQUENTIAL,
     extraInfo: expInfo, originPath: undefined,
     trialList: undefined,
-    seed: 10, name: 'blocks'
+    seed: undefined, name: 'blocks'
   });
   psychoJS.experiment.addLoop(blocks); // add the loop to the experiment
   currentLoop = blocks;  // we're now the current loop
@@ -783,10 +759,10 @@ function trialsLoopBegin(trialsLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   trials = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 1, method: TrialHandler.Method.FULLRANDOM,
+    nReps: 15, method: TrialHandler.Method.FULLRANDOM,
     extraInfo: expInfo, originPath: undefined,
     trialList: 'conditions.csv',
-    seed: 15, name: 'trials'
+    seed: undefined, name: 'trials'
   });
   psychoJS.experiment.addLoop(trials); // add the loop to the experiment
   currentLoop = trials;  // we're now the current loop
@@ -869,7 +845,6 @@ function trial_train_simonRoutineBegin(snapshot) {
     
     // keep track of which components have finished
     trial_train_simonComponents = [];
-    trial_train_simonComponents.push(train_trial_hand);
     trial_train_simonComponents.push(fixation_simon);
     trial_train_simonComponents.push(target_simon);
     trial_train_simonComponents.push(trial_resp_simon);
@@ -890,16 +865,6 @@ function trial_train_simonRoutineEachFrame(snapshot) {
     t = trial_train_simonClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
-    
-    // *train_trial_hand* updates
-    if (t >= 0.0 && train_trial_hand.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      train_trial_hand.tStart = t;  // (not accounting for frame time here)
-      train_trial_hand.frameNStart = frameN;  // exact frame index
-      
-      train_trial_hand.setAutoDraw(true);
-    }
-
     
     // *fixation_simon* updates
     if (t >= 0 && fixation_simon.status === PsychoJS.Status.NOT_STARTED) {
@@ -1576,6 +1541,8 @@ function trial_train_timingRoutineEachFrame(snapshot) {
 
 
 var rt;
+var even_trial;
+var even_resp;
 function trial_train_timingRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'trial_train_timing'-------
@@ -1592,24 +1559,32 @@ function trial_train_timingRoutineEnd(snapshot) {
     
     trial_resp_timing.stop();
     rt = trial_resp_timing.rt;
-    if ((rt < 2.4)) {
-        feedback_msg = "Too fast.";
+    
+    even_trial = timing_trial_num % 2 === 0;
+    even_resp = (trial_resp_timing.keys === 'up') || (trial_resp_timing.keys == 'down')
+    
+    if ((even_trial && !even_resp) || (!even_trial && even_resp)) {
+        feedback_msg = "Wrong hand.";
         feedback_color = "red";
     } else {
-        if ((rt > 2.6)) {
-            feedback_msg = "Too slow.";
+        if ((rt < 2.4)) {
+            feedback_msg = "Too fast.";
             feedback_color = "red";
         } else {
-            if (((rt >= 2.4) && (rt <= 2.6))) {
-                feedback_msg = "Perfect timing!";
-                feedback_color = "green";
-            } else {
-                feedback_msg = "No response.";
+            if ((rt > 2.6)) {
+                feedback_msg = "Too slow.";
                 feedback_color = "red";
+            } else {
+                if (((rt >= 2.4) && (rt <= 2.6))) {
+                    feedback_msg = "Perfect timing!";
+                    feedback_color = "green";
+                } else {
+                    feedback_msg = "No response.";
+                    feedback_color = "red";
+                }
             }
         }
     }
-    
     
     timing_trial_num += 1;
     // the Routine "trial_train_timing" was not non-slip safe, so reset the non-slip timer
@@ -1878,7 +1853,6 @@ function trialRoutineBegin(snapshot) {
     
     // keep track of which components have finished
     trialComponents = [];
-    trialComponents.push(trial_hand);
     trialComponents.push(fixation);
     trialComponents.push(dot1);
     trialComponents.push(dot2);
@@ -1902,16 +1876,6 @@ function trialRoutineEachFrame(snapshot) {
     t = trialClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
-    
-    // *trial_hand* updates
-    if (t >= 0.0 && trial_hand.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      trial_hand.tStart = t;  // (not accounting for frame time here)
-      trial_hand.frameNStart = frameN;  // exact frame index
-      
-      trial_hand.setAutoDraw(true);
-    }
-
     
     // *fixation* updates
     if (t >= 0 && fixation.status === PsychoJS.Status.NOT_STARTED) {

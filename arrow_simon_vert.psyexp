@@ -83,7 +83,7 @@
         <Param name="color" updates="constant" val="" valType="color"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="contrast" updates="constant" val="1" valType="num"/>
-        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="disabled" updates="None" val="True" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="num"/>
         <Param name="flip" updates="constant" val="None" valType="str"/>
         <Param name="font" updates="constant" val="Arial" valType="str"/>
@@ -537,7 +537,7 @@
         <Param name="color" updates="constant" val="" valType="color"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="contrast" updates="constant" val="1" valType="num"/>
-        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="disabled" updates="None" val="True" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="num"/>
         <Param name="flip" updates="constant" val="None" valType="str"/>
         <Param name="font" updates="constant" val="Arial" valType="str"/>
@@ -838,7 +838,7 @@
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Routine" updates="constant" val="rt = trial_resp_timing.rt;&amp;#10;if ((rt &lt; 2.4)) {&amp;#10;    feedback_msg = &quot;Too fast.&quot;;&amp;#10;    feedback_color = &quot;red&quot;;&amp;#10;} else {&amp;#10;    if ((rt &gt; 2.6)) {&amp;#10;        feedback_msg = &quot;Too slow.&quot;;&amp;#10;        feedback_color = &quot;red&quot;;&amp;#10;    } else {&amp;#10;        if (((rt &gt;= 2.4) &amp;&amp; (rt &lt;= 2.6))) {&amp;#10;            feedback_msg = &quot;Perfect timing!&quot;;&amp;#10;            feedback_color = &quot;green&quot;;&amp;#10;        } else {&amp;#10;            feedback_msg = &quot;No response.&quot;;&amp;#10;            feedback_color = &quot;red&quot;;&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;&amp;#10;&amp;#10;timing_trial_num += 1;" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="rt = trial_resp_timing.rt;&amp;#10;&amp;#10;even_trial = timing_trial_num % 2 === 0;&amp;#10;even_resp = (trial_resp_timing.keys === 'up') || (trial_resp_timing.keys == 'down')&amp;#10;&amp;#10;if ((even_trial &amp;&amp; !even_resp) || (!even_trial &amp;&amp; even_resp)) {&amp;#10;    feedback_msg = &quot;Wrong hand.&quot;;&amp;#10;    feedback_color = &quot;red&quot;;&amp;#10;} else {&amp;#10;    if ((rt &lt; 2.4)) {&amp;#10;        feedback_msg = &quot;Too fast.&quot;;&amp;#10;        feedback_color = &quot;red&quot;;&amp;#10;    } else {&amp;#10;        if ((rt &gt; 2.6)) {&amp;#10;            feedback_msg = &quot;Too slow.&quot;;&amp;#10;            feedback_color = &quot;red&quot;;&amp;#10;        } else {&amp;#10;            if (((rt &gt;= 2.4) &amp;&amp; (rt &lt;= 2.6))) {&amp;#10;                feedback_msg = &quot;Perfect timing!&quot;;&amp;#10;                feedback_color = &quot;green&quot;;&amp;#10;            } else {&amp;#10;                feedback_msg = &quot;No response.&quot;;&amp;#10;                feedback_color = &quot;red&quot;;&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;&amp;#10;timing_trial_num += 1;" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="name" updates="None" val="trial_code_timing" valType="code"/>
@@ -1041,9 +1041,9 @@
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="fullRandom" valType="str"/>
-      <Param name="nReps" updates="None" val="1" valType="code"/>
+      <Param name="nReps" updates="None" val="15" valType="code"/>
       <Param name="name" updates="None" val="trials_train_simon" valType="code"/>
-      <Param name="random seed" updates="None" val="15" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
     <Routine name="trial_train_simon"/>
     <Routine name="feedback"/>
@@ -1058,9 +1058,9 @@
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="6" valType="code"/>
+      <Param name="nReps" updates="None" val="60" valType="code"/>
       <Param name="name" updates="None" val="trials_train_timing" valType="code"/>
-      <Param name="random seed" updates="None" val="60" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
     <Routine name="trial_train_timing"/>
     <Routine name="feedback_timing"/>
@@ -1073,9 +1073,9 @@
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="False" valType="bool"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="2" valType="code"/>
+      <Param name="nReps" updates="None" val="10" valType="code"/>
       <Param name="name" updates="None" val="blocks" valType="code"/>
-      <Param name="random seed" updates="None" val="10" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
     <LoopInitiator loopType="TrialHandler" name="trials">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
@@ -1084,9 +1084,9 @@
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="fullRandom" valType="str"/>
-      <Param name="nReps" updates="None" val="1" valType="code"/>
+      <Param name="nReps" updates="None" val="15" valType="code"/>
       <Param name="name" updates="None" val="trials" valType="code"/>
-      <Param name="random seed" updates="None" val="15" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
     <Routine name="trial"/>
     <Routine name="feedback_test"/>
