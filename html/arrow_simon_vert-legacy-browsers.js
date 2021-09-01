@@ -254,7 +254,7 @@ function experimentInit() {
   instruct_text_timing = new visual.TextStim({
     win: psychoJS.window,
     name: 'instruct_text_timing',
-    text: 'Nice job! Now you are about to begin a block of practice trials in a rapid response timing game. \n\nIn this block, there are no colors that you need to respond to. Instead, in each trial you will see a colored cross in the center of the screen. Next, the cross will turn into a black dot that flashes three times. After the third flash, a WHITE DOT will appear at the center of the screen.\n\nYour new goal is to respond exactly when you see the WHITE DOT. \n\nYou can press the LEFT arrow key with your right pointer finger, the RIGHT arrow key with your right middle finger, the UP arrow key with your left middle finger, or the DOWN arrow key with your left pointer finger.\n\nWe recommend that you switch between using your right hand (left/right) and left hand (up/down), just as you did in the first phase of practice. This will help you prepare for the later test phase. \n\nAfter each trial, you will get feedback about how you did. \n\nWe will tell you if you were too slow or too fast or if you pressed the wrong key (e.g., you pressed left arrow key on an odd up/down trial). \n\nWhen you are ready to begin this block of practice trials, please press the SPACE BAR. ',
+    text: 'Nice job! Now you are about to begin a block of practice trials in a rapid response timing game. \n\nIn this block, there are no arrows that you need to respond to. Instead, in each trial you will see a colored cross in the center of the screen. Next, the cross will turn into a black dot that flashes three times. After the third flash, a WHITE DOT will appear at the center of the screen.\n\nYour new goal is to respond exactly when you see the WHITE DOT. \n\nYou can press the LEFT arrow key with your right pointer finger, the RIGHT arrow key with your right middle finger, the UP arrow key with your left middle finger, or the DOWN arrow key with your left pointer finger.\n\nWe recommend that you switch between using your right hand (left/right) and left hand (up/down), just as you did in the first phase of practice. This will help you prepare for the later test phase. \n\nAfter each trial, you will get feedback about how you did. \n\nWe will tell you if you were too slow or too fast or if you pressed the wrong key (e.g., you pressed left arrow key on an odd up/down trial). \n\nWhen you are ready to begin this block of practice trials, please press the SPACE BAR. ',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.02,  wrapWidth: undefined, ori: 0,
@@ -2013,7 +2013,7 @@ function trialRoutineEachFrame(snapshot) {
     }
 
     if (trial_resp.status === PsychoJS.Status.STARTED) {
-      let theseKeys = trial_resp.getKeys({keyList: ['left', 'right', 'up', 'downesc'], waitRelease: false});
+      let theseKeys = trial_resp.getKeys({keyList: ['left', 'right', 'up', 'down', 'esc'], waitRelease: false});
       _trial_resp_allKeys = _trial_resp_allKeys.concat(theseKeys);
       if (_trial_resp_allKeys.length > 0) {
         trial_resp.keys = _trial_resp_allKeys[0].name;  // just the first key pressed
