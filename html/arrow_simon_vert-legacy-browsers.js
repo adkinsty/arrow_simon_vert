@@ -174,7 +174,7 @@ function experimentInit() {
     font: 'Arial',
     units: undefined, 
     pos: [0, 0.05], height: 0.02,  wrapWidth: undefined, ori: 0.0,
-    color: new util.Color(undefined),  opacity: undefined,
+    color: new util.Color(undefined),  opacity: 0.0,
     depth: 0.0 
   });
   
@@ -254,7 +254,7 @@ function experimentInit() {
   instruct_text_timing = new visual.TextStim({
     win: psychoJS.window,
     name: 'instruct_text_timing',
-    text: 'Nice job! Now you are about to begin a block of practice trials in a rapid response timing game. \n\nIn this block, there are no colors that you need to respond to. Instead, in each trial you will see a colored cross in the center of the screen. Next, the cross will turn into a black dot that flashes three times. After the third flash, a WHITE DOT will appear at the center of the screen.\n\nYour new goal is to respond exactly when you see the WHITE DOT. \n\nYou can press the LEFT arrow key with your right pointer finger, the RIGHT arrow key with your right middle finger, the UP arrow key with your left middle finger, or the DOWN arrow key with your left pointer finger.\n\nWe recommend that you switch from between using your left and right hands to prepare for the later test phase. The recomended hand (vertical or horizontal) will be displayed at the start of each trial. \n\nAfter each trial, you will get feedback about how you did. \n\nWe will tell you if you were too slow or too fast. \n\nWhen you are ready to begin this block of practice trials, please press the SPACE BAR. ',
+    text: 'Nice job! Now you are about to begin a block of practice trials in a rapid response timing game. \n\nIn this block, there are no arrows that you need to respond to. Instead, in each trial you will see a colored cross in the center of the screen. Next, the cross will turn into a black dot that flashes three times. After the third flash, a WHITE DOT will appear at the center of the screen.\n\nYour new goal is to respond exactly when you see the WHITE DOT. \n\nYou can press the LEFT arrow key with your right pointer finger, the RIGHT arrow key with your right middle finger, the UP arrow key with your left middle finger, or the DOWN arrow key with your left pointer finger.\n\nWe recommend that you switch between using your right hand (left/right) and left hand (up/down), just as you did in the first phase of practice. This will help you prepare for the later test phase. \n\nAfter each trial, you will get feedback about how you did. \n\nWe will tell you if you were too slow or too fast or if you pressed the wrong key (e.g., you pressed left arrow key on an odd up/down trial). \n\nWhen you are ready to begin this block of practice trials, please press the SPACE BAR. ',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.02,  wrapWidth: undefined, ori: 0,
@@ -273,7 +273,7 @@ function experimentInit() {
     font: 'Arial',
     units: undefined, 
     pos: [0, 0.05], height: 0.02,  wrapWidth: undefined, ori: 0.0,
-    color: new util.Color(undefined),  opacity: undefined,
+    color: new util.Color(undefined),  opacity: 0.0,
     depth: 0.0 
   });
   
@@ -362,7 +362,7 @@ function experimentInit() {
     font: 'Arial',
     units: undefined, 
     pos: [0, 0.05], height: 0.02,  wrapWidth: undefined, ori: 0.0,
-    color: new util.Color(undefined),  opacity: undefined,
+    color: new util.Color(undefined),  opacity: 0.0,
     depth: 0.0 
   });
   
@@ -662,10 +662,10 @@ function trials_train_simonLoopBegin(trials_train_simonLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   trials_train_simon = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 1, method: TrialHandler.Method.FULLRANDOM,
+    nReps: 15, method: TrialHandler.Method.FULLRANDOM,
     extraInfo: expInfo, originPath: undefined,
     trialList: 'conditions.csv',
-    seed: 15, name: 'trials_train_simon'
+    seed: undefined, name: 'trials_train_simon'
   });
   psychoJS.experiment.addLoop(trials_train_simon); // add the loop to the experiment
   currentLoop = trials_train_simon;  // we're now the current loop
@@ -707,10 +707,10 @@ function trials_train_timingLoopBegin(trials_train_timingLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   trials_train_timing = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 6, method: TrialHandler.Method.SEQUENTIAL,
+    nReps: 60, method: TrialHandler.Method.SEQUENTIAL,
     extraInfo: expInfo, originPath: undefined,
     trialList: undefined,
-    seed: 60, name: 'trials_train_timing'
+    seed: undefined, name: 'trials_train_timing'
   });
   psychoJS.experiment.addLoop(trials_train_timing); // add the loop to the experiment
   currentLoop = trials_train_timing;  // we're now the current loop
@@ -745,10 +745,10 @@ function blocksLoopBegin(blocksLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   blocks = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 2, method: TrialHandler.Method.SEQUENTIAL,
+    nReps: 10, method: TrialHandler.Method.SEQUENTIAL,
     extraInfo: expInfo, originPath: undefined,
     trialList: undefined,
-    seed: 10, name: 'blocks'
+    seed: undefined, name: 'blocks'
   });
   psychoJS.experiment.addLoop(blocks); // add the loop to the experiment
   currentLoop = blocks;  // we're now the current loop
@@ -777,10 +777,10 @@ function trialsLoopBegin(trialsLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   trials = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 1, method: TrialHandler.Method.FULLRANDOM,
+    nReps: 15, method: TrialHandler.Method.FULLRANDOM,
     extraInfo: expInfo, originPath: undefined,
     trialList: 'conditions.csv',
-    seed: 15, name: 'trials'
+    seed: undefined, name: 'trials'
   });
   psychoJS.experiment.addLoop(trials); // add the loop to the experiment
   currentLoop = trials;  // we're now the current loop
@@ -1576,6 +1576,8 @@ function trial_train_timingRoutineEachFrame(snapshot) {
 
 
 var rt;
+var even_trial;
+var even_resp;
 function trial_train_timingRoutineEnd(snapshot) {
   return function () {
     //------Ending Routine 'trial_train_timing'-------
@@ -1592,25 +1594,31 @@ function trial_train_timingRoutineEnd(snapshot) {
     
     trial_resp_timing.stop();
     rt = trial_resp_timing.rt;
-    if ((rt < 2.4)) {
-        feedback_msg = "Too fast.";
+    even_trial = timing_trial_num % 2 === 0;
+    even_resp = (trial_resp_timing.keys === 'up') || (trial_resp_timing.keys == 'down')
+    
+    if ((even_trial && !even_resp) || (!even_trial && even_resp)) {
+        feedback_msg = "Wrong hand.";
         feedback_color = "red";
     } else {
-        if ((rt > 2.6)) {
-            feedback_msg = "Too slow.";
+        if ((rt < 2.4)) {
+            feedback_msg = "Too fast.";
             feedback_color = "red";
         } else {
-            if (((rt >= 2.4) && (rt <= 2.6))) {
-                feedback_msg = "Perfect timing!";
-                feedback_color = "green";
-            } else {
-                feedback_msg = "No response.";
+            if ((rt > 2.6)) {
+                feedback_msg = "Too slow.";
                 feedback_color = "red";
+            } else {
+                if (((rt >= 2.4) && (rt <= 2.6))) {
+                    feedback_msg = "Perfect timing!";
+                    feedback_color = "green";
+                } else {
+                    feedback_msg = "No response.";
+                    feedback_color = "red";
+                }
             }
         }
     }
-    
-    
     timing_trial_num += 1;
     // the Routine "trial_train_timing" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
@@ -2005,7 +2013,7 @@ function trialRoutineEachFrame(snapshot) {
     }
 
     if (trial_resp.status === PsychoJS.Status.STARTED) {
-      let theseKeys = trial_resp.getKeys({keyList: ['left', 'right', 'up', 'downesc'], waitRelease: false});
+      let theseKeys = trial_resp.getKeys({keyList: ['left', 'right', 'up', 'down', 'esc'], waitRelease: false});
       _trial_resp_allKeys = _trial_resp_allKeys.concat(theseKeys);
       if (_trial_resp_allKeys.length > 0) {
         trial_resp.keys = _trial_resp_allKeys[0].name;  // just the first key pressed

@@ -1,5 +1,5 @@
 ﻿odd_target_pos,even_target_pos,odd_target_resp,odd_target_file,even_target_file,even_target_resp,odd_target_side,even_target_side
-"[-0.33,0]","[0,-0.33]",right,right_blue.png,up_orange.png,up,left,down
-"[0.33,0]","[0,0.33]",right,right_blue.png,up_orange.png,up,right,up
-"[-0.33,0]","[0,-0.33]",left,left_blue.png,down_orange.png,down,left,down
-"[0.33,0]","[0,0.33]",left,left_blue.png,down_orange.png,down,right,up
+"[-0.25,0]","[0,-0.25]",right,right_blue.png,up_orange.png,up,left,down
+"[0.25,0]","[0,0.25]",right,right_blue.png,up_orange.png,up,right,up
+"[-0.25,0]","[0,-0.25]",left,left_blue.png,down_orange.png,down,left,down
+"[0.25,0]","[0,0.25]",left,left_blue.png,down_orange.png,down,right,up
