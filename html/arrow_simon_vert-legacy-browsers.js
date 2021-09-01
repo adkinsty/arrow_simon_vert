@@ -93,6 +93,7 @@ var instructions_simonClock;
 var instruct_text_simon;
 var instruct_resp_simon;
 var trial_train_simonClock;
+var train_trial_hand;
 var fixation_simon;
 var target_simon;
 var trial_resp_simon;
@@ -125,6 +126,7 @@ var instructionsClock;
 var instruct_text;
 var instruct_resp;
 var trialClock;
+var trial_hand;
 var fixation;
 var dot1;
 var dot2;
@@ -165,13 +167,24 @@ function experimentInit() {
   
   // Initialize components for Routine "trial_train_simon"
   trial_train_simonClock = new util.Clock();
+  train_trial_hand = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'train_trial_hand',
+    text: '',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, 0.05], height: 0.02,  wrapWidth: undefined, ori: 0.0,
+    color: new util.Color(undefined),  opacity: 0.0,
+    depth: 0.0 
+  });
+  
   fixation_simon = new visual.ShapeStim ({
     win: psychoJS.window, name: 'fixation_simon', 
     vertices: 'cross', size:[0.05, 0.05],
     ori: 0, pos: [0, 0],
     lineWidth: 1, lineColor: new util.Color(undefined),
     fillColor: new util.Color(undefined),
-    opacity: 1, depth: 0, interpolate: true,
+    opacity: 1, depth: -1, interpolate: true,
   });
   
   target_simon = new visual.ImageStim({
@@ -181,7 +194,7 @@ function experimentInit() {
     ori : 0, pos : undefined, size : [0.1, 0.1],
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : -1.0 
+    texRes : 512, interpolate : true, depth : -2.0 
   });
   trial_resp_simon = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
@@ -241,7 +254,7 @@ function experimentInit() {
   instruct_text_timing = new visual.TextStim({
     win: psychoJS.window,
     name: 'instruct_text_timing',
-    text: 'Nice job! Now you are about to begin a block of practice trials in a rapid response timing game. \n\nIn this block, there are no colors that you need to respond to. Instead, in each trial you will see a colored cross in the center of the screen. Next, the cross will turn into a black dot that flashes three times. After the third flash, a WHITE DOT will appear at the center of the screen.\n\nYour new goal is to respond exactly when you see the WHITE DOT. \n\nYou can press the LEFT arrow key with your right pointer finger, the RIGHT arrow key with your right middle finger, the UP arrow key with your left middle finger, or the DOWN arrow key with your left pointer finger.\n\nWe recommend that you switch from between using your left and right hands to prepare for the later test phase. The recomended hand (vertical or horizontal) will be displayed at the start of each trial. \n\nAfter each trial, you will get feedback about how you did. \n\nWe will tell you if you were too slow or too fast. \n\nWhen you are ready to begin this block of practice trials, please press the SPACE BAR. ',
+    text: 'Nice job! Now you are about to begin a block of practice trials in a rapid response timing game. \n\nIn this block, there are no colors that you need to respond to. Instead, in each trial you will see a colored cross in the center of the screen. Next, the cross will turn into a black dot that flashes three times. After the third flash, a WHITE DOT will appear at the center of the screen.\n\nYour new goal is to respond exactly when you see the WHITE DOT. \n\nYou can press the LEFT arrow key with your right pointer finger, the RIGHT arrow key with your right middle finger, the UP arrow key with your left middle finger, or the DOWN arrow key with your left pointer finger.\n\nWe recommend that you switch between using your right hand (left/right) and left hand (up/down), just as you did in the first phase of practice. This will help you prepare for the later test phase. \n\nAfter each trial, you will get feedback about how you did. \n\nWe will tell you if you were too slow or too fast or if you pressed the wrong key (e.g., you pressed left arrow key on an odd up/down trial). \n\nWhen you are ready to begin this block of practice trials, please press the SPACE BAR. ',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.02,  wrapWidth: undefined, ori: 0,
@@ -260,7 +273,7 @@ function experimentInit() {
     font: 'Arial',
     units: undefined, 
     pos: [0, 0.05], height: 0.02,  wrapWidth: undefined, ori: 0.0,
-    color: new util.Color(undefined),  opacity: undefined,
+    color: new util.Color(undefined),  opacity: 0.0,
     depth: 0.0 
   });
   
@@ -342,13 +355,24 @@ function experimentInit() {
   
   // Initialize components for Routine "trial"
   trialClock = new util.Clock();
+  trial_hand = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'trial_hand',
+    text: '',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, 0.05], height: 0.02,  wrapWidth: undefined, ori: 0.0,
+    color: new util.Color(undefined),  opacity: 0.0,
+    depth: 0.0 
+  });
+  
   fixation = new visual.ShapeStim ({
     win: psychoJS.window, name: 'fixation', 
     vertices: 'cross', size:[0.05, 0.05],
     ori: 0, pos: [0, 0],
     lineWidth: 1, lineColor: new util.Color(undefined),
     fillColor: new util.Color(undefined),
-    opacity: 1, depth: 0, interpolate: true,
+    opacity: 1, depth: -1, interpolate: true,
   });
   
   dot1 = new visual.Polygon ({
@@ -357,7 +381,7 @@ function experimentInit() {
     ori: 0, pos: [0, 0],
     lineWidth: 1, lineColor: new util.Color([(- 1), (- 1), (- 1)]),
     fillColor: new util.Color([(- 1), (- 1), (- 1)]),
-    opacity: 1, depth: -1, interpolate: true,
+    opacity: 1, depth: -2, interpolate: true,
   });
   
   dot2 = new visual.Polygon ({
@@ -366,7 +390,7 @@ function experimentInit() {
     ori: 0, pos: [0, 0],
     lineWidth: 1, lineColor: new util.Color([(- 1), (- 1), (- 1)]),
     fillColor: new util.Color([(- 1), (- 1), (- 1)]),
-    opacity: 1, depth: -2, interpolate: true,
+    opacity: 1, depth: -3, interpolate: true,
   });
   
   dot3 = new visual.Polygon ({
@@ -375,7 +399,7 @@ function experimentInit() {
     ori: 0, pos: [0, 0],
     lineWidth: 1, lineColor: new util.Color([(- 1), (- 1), (- 1)]),
     fillColor: new util.Color([(- 1), (- 1), (- 1)]),
-    opacity: 1, depth: -3, interpolate: true,
+    opacity: 1, depth: -4, interpolate: true,
   });
   
   dot4 = new visual.Polygon ({
@@ -384,7 +408,7 @@ function experimentInit() {
     ori: 0, pos: [0, 0],
     lineWidth: 1, lineColor: new util.Color([1, 1, 1]),
     fillColor: new util.Color([1, 1, 1]),
-    opacity: 1, depth: -4, interpolate: true,
+    opacity: 1, depth: -5, interpolate: true,
   });
   
   target = new visual.ImageStim({
@@ -394,7 +418,7 @@ function experimentInit() {
     ori : 0, pos : undefined, size : [0.1, 0.1],
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : -5.0 
+    texRes : 512, interpolate : true, depth : -6.0 
   });
   trial_resp = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
@@ -840,6 +864,7 @@ function trial_train_simonRoutineBegin(snapshot) {
     
     // keep track of which components have finished
     trial_train_simonComponents = [];
+    trial_train_simonComponents.push(train_trial_hand);
     trial_train_simonComponents.push(fixation_simon);
     trial_train_simonComponents.push(target_simon);
     trial_train_simonComponents.push(trial_resp_simon);
@@ -861,6 +886,16 @@ function trial_train_simonRoutineEachFrame(snapshot) {
     t = trial_train_simonClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
+    
+    // *train_trial_hand* updates
+    if (t >= 0.0 && train_trial_hand.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      train_trial_hand.tStart = t;  // (not accounting for frame time here)
+      train_trial_hand.frameNStart = frameN;  // exact frame index
+      
+      train_trial_hand.setAutoDraw(true);
+    }
+
     
     // *fixation_simon* updates
     if (t >= 0 && fixation_simon.status === PsychoJS.Status.NOT_STARTED) {
@@ -1559,7 +1594,6 @@ function trial_train_timingRoutineEnd(snapshot) {
     
     trial_resp_timing.stop();
     rt = trial_resp_timing.rt;
-    
     even_trial = timing_trial_num % 2 === 0;
     even_resp = (trial_resp_timing.keys === 'up') || (trial_resp_timing.keys == 'down')
     
@@ -1585,7 +1619,6 @@ function trial_train_timingRoutineEnd(snapshot) {
             }
         }
     }
-    
     timing_trial_num += 1;
     // the Routine "trial_train_timing" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
@@ -1855,6 +1888,7 @@ function trialRoutineBegin(snapshot) {
     
     // keep track of which components have finished
     trialComponents = [];
+    trialComponents.push(trial_hand);
     trialComponents.push(fixation);
     trialComponents.push(dot1);
     trialComponents.push(dot2);
@@ -1879,6 +1913,16 @@ function trialRoutineEachFrame(snapshot) {
     t = trialClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
+    
+    // *trial_hand* updates
+    if (t >= 0.0 && trial_hand.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      trial_hand.tStart = t;  // (not accounting for frame time here)
+      trial_hand.frameNStart = frameN;  // exact frame index
+      
+      trial_hand.setAutoDraw(true);
+    }
+
     
     // *fixation* updates
     if (t >= 0 && fixation.status === PsychoJS.Status.NOT_STARTED) {
